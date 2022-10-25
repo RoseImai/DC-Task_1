@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Random;
 
 public class HtmlStorage {
     public static void createID(PrintWriter output)
@@ -28,14 +29,19 @@ public class HtmlStorage {
 
     public static void params(PrintWriter output)
     {
-        output.println("HTTP/1.1 200 OK");
-        output.println("Content-Type: text/html; charset=utf-8");
-        output.println();
-        output.println("<html>");
-        output.println("<head><title>Function</title></head>");
-        output.println("<body><p>Some function</p></body>");
-        output.println("</html>");
-        output.flush();
+        Random rand = new Random();
+        for(int i = 0; i<=100; i++)
+        {
+            int k = rand.nextInt(1000);
+            output.println("HTTP/1.1 200 OK");
+            output.println("Content-Type: text/html; charset=utf-8");
+            output.println();
+            output.println("<html>");
+            output.println("<head><title>Function</title></head>");
+            output.println("<body><p>Some function generated " + k + "</p></body>");
+            output.println("</html>");
+            output.flush();
+        }
     }
 
     public static void defaultPage(PrintWriter output)
